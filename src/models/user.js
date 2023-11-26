@@ -55,4 +55,8 @@ const QuizAttempt = mongoose.model('QuizAttempt', quizAttemptSchema);
 
 module.exports = QuizAttempt;
 
+<<<<<<< HEAD:src/models/user.js
 module.exports = mongoose.model("user", userSchema);
+=======
+module.exports = mongoose.model("user", userSchema);
+>>>>>>> aa482bb6af65c2233311b2598a1b1cb2d69cbe1e:src/models/score.js
