@@ -1,5 +1,25 @@
 const mongoose = require('mongoose');
 
+
+const userSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+
+
+});
+
 const quizAttemptSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -34,3 +54,5 @@ const quizAttemptSchema = new mongoose.Schema({
 const QuizAttempt = mongoose.model('QuizAttempt', quizAttemptSchema);
 
 module.exports = QuizAttempt;
+
+module.exports = mongoose.model("user", userSchema);
