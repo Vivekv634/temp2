@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Question = require('./models/questions')
+const User = require('./models/user')
 
 // get all quiz questions
 router.get('/questions', async (req, res) => {
@@ -88,6 +89,17 @@ router.delete('/questions/:id', async (req, res) => {
 // this one is just a test
 router.get('/', (req, res) => {
     res.send('H3ll0 W0RlD')
+})
+
+router.post('/update-score/:userId', async (req, res) => {
+    const userScore = req.body.userScore;
+    const _id = req.params.userId;
+    const userExists = await User.findOne({ _id });
+    if (userExists) {
+        userExists.score = userScore;
+        userExists.save();
+        res.json({user:userExists})
+    }
 })
 // check user's answer against the correct option
 router.post('/check-answer/:questionId', async (req, res) => {
