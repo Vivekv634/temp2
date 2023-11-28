@@ -97,8 +97,10 @@ router.post('/update-score/:userId', async (req, res) => {
     const userExists = await User.findOne({ _id });
     if (userExists) {
         userExists.score = userScore;
-        userExists.save();
-        res.json({user:userExists})
+        const user = await userExists.save();
+        res.json({ user });
+    } else {
+        res.json({ error: "User not found" });
     }
 })
 // check user's answer against the correct option
